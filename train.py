@@ -30,7 +30,7 @@ def train_model(data):
 
     # Create the model
     model = keras.models.Sequential()
-    model.add(keras.layers.LSTM(64, input_shape=(time_steps, num_features)))
+    model.add(keras.layers.LSTM(64, activation=keras.activations.relu, input_shape=(time_steps, num_features)))
     model.add(keras.layers.Dense(1))
 
     # Compile the model
@@ -58,10 +58,6 @@ def main():
 
     if(not os.path.exists(input_file)):
         print("Input - CSV file not found")
-        sys.exit(1);
-    
-    if(not os.path.exists(model_file)):
-        print("Model - Keras file not found")
         sys.exit(1);
     
     try:
